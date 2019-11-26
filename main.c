@@ -5,6 +5,7 @@
 
 /*Funcao que ira criar colocar a logo campo minado puxando de um arquivo*/
 void img_text(){
+
     char *filename = "campo_minado.txt";
     FILE *fptr;
     if(!(fptr = fopen(filename, "r"))){
@@ -19,7 +20,7 @@ void img_text(){
     return;
 }
 
-//Funcao Limpa a tela.
+/*Funcao que limpa a tela.*/
 void clrscr(){
     system("@cls||clear");
 }
@@ -29,7 +30,9 @@ void menu_jogo(){
 
     char opcao, opcao2;
     int person[2] = {0}; 
+
     img_text();
+    
     printf("\nSeja Bem-Vindo ao Campo Minado!\n");
 
     while(1){
