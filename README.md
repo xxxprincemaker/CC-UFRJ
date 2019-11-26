@@ -1,2 +1,2 @@
-# CC-UFRJ
-Um jogo criado para ser o trabalho final da disciplina de computação na Universidade Federal do Rio de Janeiro.
+- Geração do Tabuleiro (sem as bombas); 
+- Algumas funções do ANSI/VT100;
