@@ -4,10 +4,10 @@ Avanços:
 - Defini as linhas como letras e as colunas como números (mas podemos mudar depois);
 
 - O jogador pode escolher botar uma bandeira, interrogação, remover um deles ou abrir um bloco;
-    -> Para botar uma bandeira: "@ [linha] [coluna]";
-    -> Para botar uma interrogação: "? [linha] [coluna]";
-    -> Para remover uma ? ou @: "R/r [linha] [coluna]"; 
-    -> Para abrir um bloco: "A/a [linha] [coluna]";
+    - Para botar uma bandeira: "@ [linha] [coluna]";
+    - Para botar uma interrogação: "? [linha] [coluna]";
+    - Para remover uma ? ou @: "R/r [linha] [coluna]"; 
+    - Para abrir um bloco: "A/a [linha] [coluna]";
 
 - Quando abre um bloco o programa já realiza as aberturas necessárias;
 - Se o usuário clicar numa bomba, ele perde o jogo;
