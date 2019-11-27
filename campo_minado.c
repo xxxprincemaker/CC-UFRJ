@@ -4,7 +4,7 @@
 #include<time.h>
 
 
-/*protótipos de função*/
+/*protÃ³tipos de funÃ§Ã£o*/
 int partida(int lin, int col, int minas);
 int ** gera_tabuleiro(int lin, int col);
 void mostra_tab(int **tab, int lin, int col);
@@ -62,7 +62,7 @@ int partida(int lin, int col, int minas){
     scanf(" %d", &c);
     printf("EI");
 
-    /*O cronômetro começa*/
+    /*O cronÃ´metro comeÃ§a*/
 
     livres = lin*col - minas;
     while(1){
@@ -141,7 +141,7 @@ VITORIA:
     bota_bandeiras(tab, lin, col);
     printf("\033c \n");
     mostra_tab(tab, lin, col);
-    return tempo; //Do cronômetro
+    return tempo; //Do cronÃ´metro
 }
 
 
