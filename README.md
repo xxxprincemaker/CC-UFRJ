@@ -14,36 +14,36 @@ Avanços:
 - Se só sobrarem bombas no tabuleiro, ele ganha;
 
 - Sobre os números no campo:
-    -> -41: bomba que fez o jogador perder;
-    -> -40: bomba que não tinha bandeira em cima;
-    -> -30: tinha bandeira, mas não era bomba; 
-    -> -20 ou -21: bandeira em cima do bloco;
-    -> -10 ou -11: dúvida quanto ao bloco;
-    -> -1: não foi aberto e tem bomba;
-    -> 0: não foi aberto e não tem bomba;
-    -> 1 a 8: já foi aberto e tem bombas em volta;
-    -> 9: já foi aberto e não tem nada em volta;
+    - -41: bomba que fez o jogador perder;
+    - -40: bomba que não tinha bandeira em cima;
+    - -30: tinha bandeira, mas não era bomba; 
+    - -20 ou -21: bandeira em cima do bloco;
+    - -10 ou -11: dúvida quanto ao bloco;
+    - -1: não foi aberto e tem bomba;
+    - 0: não foi aberto e não tem bomba;
+    - 1 a 8: já foi aberto e tem bombas em volta;
+    - 9: já foi aberto e não tem nada em volta;
 
 
 - Simbologia dos números do campo:
     "*X@?0123456789"
 
-    -> -41: '*' (em vermelho, em negrito e piscando)
-    -> -40: '*' (em negrito e branco [mas acho que seria melhor botar preto, quando mudarmos o fundo])
-    -> -30: 'X' (em vermelho, em negrito)
-    -> -20 ou -21: '@' (amarelo e em negrito)
-    -> -10 ou -11: '?' (amarelo e em negrito)
-    -> -1: '0' (o usuário não sabe que tem bomba)
-    -> 0: '0' (branco)
-    -> 1 a 8: '1' a '8' (a cor depende do número)
-    -> 9: '-' (branco mais fraco)
+    - -41: '*' (em vermelho, em negrito e piscando)
+    - -40: '*' (em negrito e branco [mas acho que seria melhor botar preto, quando mudarmos o fundo])
+    - -30: 'X' (em vermelho, em negrito)
+    - -20 ou -21: '@' (amarelo e em negrito)
+    - -10 ou -11: '?' (amarelo e em negrito)
+    - -1: '0' (o usuário não sabe que tem bomba)
+    - 0: '0' (branco)
+    - 1 a 8: '1' a '8' (a cor depende do número)
+    - 9: '-' (branco mais fraco)
 
 
 - Cor dos números:
-    -> 1 e 5 -> azul
-    -> 2 e 6 -> verde
-    -> 3 e 7 -> vermelho 
-    -> 4 e 8 -> magenta (mas pode ser que tenha uma opção melhor)
+    - 1 e 5 -> azul
+    - 2 e 6 -> verde
+    - 3 e 7 -> vermelho 
+    - 4 e 8 -> magenta (mas pode ser que tenha uma opção melhor)
 
 
 
