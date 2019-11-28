@@ -11,13 +11,6 @@ int regras_jogo();
 int creditos();
 void menu_jogo();
 void mostra_ranking();
-void timer();
-
-/*Funcao que ira contar o tempo passado no jogo.*/
-void timer(){
-
-}
-
 
 /*Funcao que ira criar colocar as logos do campo minado puxando de um arquivo*/
 void img_text(char name[255]){
