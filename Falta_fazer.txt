@@ -4,9 +4,9 @@ Falta fazer:
     - Contar quantas bandeiras o jogador botou no tabuleiro: começa com o número de bombas e vai decrementando, 
       não necessariamente acaba em zero, o usuário pode botar mais bandeiras que bombas existentes (mas aí fica negativo);
     - Sistema de arquivos para guardar os recordes (assim como atualizá-los);
-    - A aba de Recordes do menu;
-    - A aba dos Créditos no menu;
-    - A aba das Regras do Jogo no menu, explicando: como funciona o Campo Minado e como jogar o nosso jogo;
+    - A aba de Recordes do menu(x) -> Prince;
+    - A aba dos Créditos no menu(x) -> Prince;
+    - A aba das Regras do Jogo no menu, explicando: como funciona o Campo Minado e como jogar o nosso jogo(x) -> Prince;
     - Fazer um template melhor para a partida, porque o atual é básico (mas até que achei bonitinho o que está lá);
     - [Talvez] Sistema de replay do jogo, para ver quais movimentos o jogador fez durante a partida;
     - [Talvez] Implementar mouse, se tudo já estiver pronto e tivermos tempo.
