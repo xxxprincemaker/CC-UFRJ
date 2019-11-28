@@ -14,7 +14,8 @@ void mostra_ranking();
 void timer();
 
 /*Funcao que ira contar o tempo passado no jogo.*/
-void time(){
+void timer(){
+
 }
 
 
