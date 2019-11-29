@@ -1,0 +1,3 @@
+Rank        -        Nome        -         Tempo
+1           -        Joao        -         2,85
+2           -        Carlos      -         4,85
