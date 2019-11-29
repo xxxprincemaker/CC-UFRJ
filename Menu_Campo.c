@@ -8,11 +8,12 @@
 /*Prototipos*/
 void img_text(char name[255]);
 void clrscr();
+int continues();
 int regras_jogo();
 int creditos();
 void menu_jogo();
 void mostra_ranking();
-int continues();
+
 
 /*Funcao que ira criar colocar as logos do campo minado puxando de um arquivo*/
 void img_text(char name[255]){

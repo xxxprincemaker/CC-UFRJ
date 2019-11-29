@@ -81,6 +81,7 @@ int partida(int lin, int col, int minas){
 
     printf("\033c \n");
     mostra_tab(tab, lin, col);
+    /*Necessario validacao, pois o usuario pode digitar coordenadas que nao existem.*/
     printf("\nEntre com a sua jogada: ");
     scanf(" %c %c", &op, &l);
     scanf(" %d", &c);
