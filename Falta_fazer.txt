@@ -1,6 +1,6 @@
 Falta fazer:
     - Verificar se o usuário entrou com as informações certas (em todo o programa);    
-    - Cronômetro;
+    - Cronômetro(x) - > Prince/Parcialmente;
     - Contar quantas bandeiras o jogador botou no tabuleiro: começa com o número de bombas e vai decrementando, 
       não necessariamente acaba em zero, o usuário pode botar mais bandeiras que bombas existentes (mas aí fica negativo);
     - Sistema de arquivos para guardar os recordes (assim como atualizá-los);
