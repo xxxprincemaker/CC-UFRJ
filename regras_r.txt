@@ -7,4 +7,4 @@
     5.1 - Iniciate -> 9x9 com 10 Minas
     5.2 - Intermediario -> 16x16 com 40 Minas
     5.3 - Especialista -> 30x16 com 99 Minas 
-    5.4 - Personlizado -> O jogador escolhe o tamanho do tabuleiro e as minas
+    5.4 - Personalizado -> O jogador escolhe o tamanho do tabuleiro e a quantidade de Minas.
