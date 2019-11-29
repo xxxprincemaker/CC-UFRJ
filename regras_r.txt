@@ -1,0 +1,10 @@
+4 - O jogador pode escolher botar uma bandeira, interrogação, remover um deles ou abrir um bloco;
+    4.1 - Para botar uma bandeira: "@ [linha] [coluna]";
+    4.2 - Para botar uma interrogação: "? [linha] [coluna]";
+    4.3 - Para remover uma ? ou @: "R/r [linha] [coluna]"; 
+    4.4 - Para abrir um bloco: "A/a [linha] [coluna]";
+5 - Dificuldades:
+    5.1 - Iniciate -> 9x9 com 10 Minas
+    5.2 - Intermediario -> 16x16 com 40 Minas
+    5.3 - Especialista -> 30x16 com 99 Minas 
+    5.4 - Personlizado -> O jogador escolhe o tamanho do tabuleiro e as minas
