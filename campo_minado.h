@@ -14,7 +14,7 @@ int minas_arredores(int **tab, int i, int j);
 void descobre_blocos(int **tab, int i, int j);
 int calcula_livres(int **tab, int lin, int col);
 void bota_bandeiras(int **tab, int lin, int col);
-void escreve_placar(char nome[], double secs);
+void escreve_placar(char nome[]);
 
 
 int campo_init(int lin, int col, int minas){ 
@@ -44,13 +44,8 @@ int campo_init(int lin, int col, int minas){
         }
     }
 
-    timer = clock();
     //vai ser chamado de acordo com o modo
     resultado = partida(lin, col, minas);
-    timer = clock() - timer;
-    double time_taken = ((double)timer)/CLOCKS_PER_SEC;
-    
-
 
     if(resultado<0){
         printf("\nVoce perdeu!\n");
@@ -62,7 +57,7 @@ int campo_init(int lin, int col, int minas){
         scanf(" %[^\n]s", nome);
 
         /*Grava no arquivo se tiver batido record*/
-        escreve_placar(nome, time_taken);
+        escreve_placar(nome);
     }
 
     return 0;
@@ -373,7 +368,7 @@ void bota_bandeiras(int **tab, int lin, int col){
     }
 }
 /*Esta funcao grava no arquivo o placar do jogo*/
-void escreve_placar(char nome[], double secs){
+void escreve_placar(char nome[]){
 
 
 }

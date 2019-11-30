@@ -55,14 +55,14 @@ void menu_jogo(){
             creditos();
         }else{
             //Sai do Jogo.
-            return;
+            exit(0);
         }
     }else{
 
         aux = regras_jogo();
 
         /*Modo de checar se o jogador aceita e concordou com as regras!*/
-        if (aux == 0) return;
+        if (aux == 0) exit(0);
 
         clrscr();
 
@@ -92,27 +92,27 @@ void menu_jogo(){
                     campo_init(9,9,10);
                     opcao3 = continues(); // Determina se o jogador deseja continuar jogando
                     if (opcao3 == 1) clrscr(), menu_jogo();
-                    else return;
+                    else exit(0);
                     break;
                 case '2':
                     //Chama o Jogo no modo intermediario.
                     campo_init(16,16,40);
                     opcao3 = continues();
                     if (opcao3 == 1) clrscr(), menu_jogo();
-                    else return;
+                    else exit(0);
                     break;
                 case '3':
                     //Chama o Jogo no modo Especialista.
                     campo_init(30,16,99);
                     opcao3 = continues();
                     if (opcao3 == 1) clrscr(), menu_jogo();
-                    else return;
+                    else exit(0);
                     break;
                 case '4':
                     campo_init(0,0,0);
                     opcao3 = continues();
                     if (opcao3 == 1) clrscr(), menu_jogo();
-                    else return;
+                    else exit(0);
                     break;
                 default:
                     return menu_jogo();
@@ -120,7 +120,6 @@ void menu_jogo(){
 
         }while(1);
     }
-
 }
 
 /*Funcao que limpa a tela.*/
@@ -176,7 +175,7 @@ int creditos(){
             clrscr();
             menu_jogo();
         }
-        else if (opcao == 'N' || opcao == 'n') return 0;
+        else if (opcao == 'N' || opcao == 'n') exit(0);
         else{ //Limpar o buffer para nao ter erro.
             ERRO
             setbuf(stdin,0);
@@ -200,9 +199,9 @@ void mostra_ranking(){
         scanf(" %c", &opcao);
         if (opcao == 'S' || opcao == 's'){
             clrscr();
-            menu_jogo();
+            return menu_jogo();
         }
-        else if (opcao == 'N' || opcao == 'n') return;
+        else if (opcao == 'N' || opcao == 'n') exit(0);
         else{ //Limpar o buffer para nao ter erro.
             ERRO
             setbuf(stdin,0);
