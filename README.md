@@ -27,7 +27,7 @@ Um jogo criado para ser o trabalho final da disciplina de computação na Univer
     ### Exemplo
         João deseja iniciar o campo minado e após aceitar as regras do jogo ele irá abrir um bloco.
         
-        ### João digita: a b 1.
+        - João digita: a b 1.
         
         Com este comando, João abre a linha B na coluna 1.
         
