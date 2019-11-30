@@ -20,7 +20,6 @@ void escreve_placar(char nome[]);
 int campo_init(int lin, int col, int minas){ 
     int resultado;
     char nome[25];
-    clock_t timer;
     
 
     system(" ");//Para fazer o VT100 funcionar no Windows 10

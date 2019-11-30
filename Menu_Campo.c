@@ -134,9 +134,7 @@ int regras_jogo(){
 
     img_text("regras.txt");
 
-    printf("\n\n1 - Se você descobrir uma mina, o jogo acaba.\n");
-    printf("2 - Se descobrir um quadrado vazio, o jogo continua.\n");
-    printf("3 - Se aparecer um número, ele informará quantas minas estão escondidas nos oito quadrados que o cercam. \n");
+    printf("\n\n\n");
     
     img_text("regras_r.txt");
     
