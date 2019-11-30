@@ -17,5 +17,5 @@ Um jogo criado para ser o trabalho final da disciplina de computação na Univer
         - Iniciate -> 9x9 com 10 Minas
         - Intermediario -> 16x16 com 40 Minas
         - Especialista -> 30x16 com 99 Minas 
-        - Personalizado -> O jogador escolhe o tamanho do tabuleiro e as minas
+        - Personalizado -> O jogador escolhe o tamanho do tabuleiro e a quantidade de minas
 
