@@ -6,138 +6,20 @@
 #define ERRO printf("Digite um valor valido!\n");
 
 /*Prototipos*/
-void img_text(char name[255]);
+void menu_jogo();
 void clrscr();
-int continues();
 int regras_jogo();
 int creditos();
-void menu_jogo();
 void mostra_ranking();
+int continues();
+void img_text(char name[255]);
 
+/*Funcao Principal do Jogo*/
+int main(){
 
-/*Funcao que ira criar colocar as logos do campo minado puxando de um arquivo*/
-void img_text(char name[255]){
+    menu_jogo();
 
-    char *filename = name;
-    FILE *fptr;
-    if(!(fptr = fopen(filename, "r"))){
-        fprintf(stderr,"Erro na abertura do arquivo %s.\n", filename);
-        return;
-    }
-    char read_string[MAX_LEN];
-    while(fgets(read_string,sizeof(read_string),fptr) != NULL){
-        printf("%s", read_string);
-    }
-    fclose(fptr);
-    return;
-}
-
-/*Funcao que limpa a tela.*/
-void clrscr(){
-    system("@cls||clear");
-}
-
-/*Funcao que ira continuar jogando o jogo*/
-int continues(){
-    char opcao;
-    while(1){
-        printf("Deseja continuar jogando?(S/N):");
-        scanf(" %c", &opcao);
-        if (opcao == 'S' || opcao == 's'){
-            return 1;
-        }else if (opcao == 'N' || opcao == 'n'){
-            return 0;
-        }else{ //Limpar o buffer para nao ter erro.
-            ERRO
-            setbuf(stdin,0);
-            //opcao = "\000";
-            continue;
-        }
-    }
-}
-
-
-/*Funcao ira mostrar as regras do jogo*/
-int regras_jogo(){
-    
-    char opcao;
-
-    img_text("regras.txt");
-
-    printf("\n\n1 - Se você descobrir uma mina, o jogo acaba.\n");
-    printf("2 - Se descobrir um quadrado vazio, o jogo continua.\n");
-    printf("3 - Se aparecer um número, ele informará quantas minas estão escondidas nos oito quadrados que o cercam. \n");
-    
-    img_text("regras_r.txt");
-    
-    while (1){    
-        printf("\n\nAceita as regras e deseja prosseguir?(S/N):");
-        scanf(" %c", &opcao);
-        if (opcao == 'S' || opcao == 's'){
-            return 1;
-        }else if (opcao == 'N' || opcao == 'n'){
-            return 0;
-        }else{ //Limpar o buffer para nao ter erro.
-            ERRO
-            setbuf(stdin,0);
-            //opcao = "\000";
-            continue;
-        }
-    }
-
-}
-/*Funcao que ira mostrar os creditos na tela*/
-int creditos(){
-
-    char opcao;
-
-    img_text("creditos.txt");
-
-    printf("\n\n1 - Camila Lacerda\n2 - Felipe de Jesus\n");
-    printf("3 - Luiz Felipe A. Soares\n4 - Pedro Pompolino\n\n");
-
-    while(1){
-        /*Poderia ser feito de forma recursiva.*/
-        printf("Deseja retornar?(S/N):");
-        scanf(" %c", &opcao);
-        if (opcao == 'S' || opcao == 's'){
-            clrscr();
-            menu_jogo();
-        }
-        else if (opcao == 'N' || opcao == 'n') return 0;
-        else{ //Limpar o buffer para nao ter erro.
-            ERRO
-            setbuf(stdin,0);
-            //opcao = NULL;
-            continue;
-            }
-        }
-}
-
-/*Funcao que ira apenas motrar o ranking atual do jogo*/
-void mostra_ranking(){
-
-    char opcao;
-
-    img_text("ranking_image.txt");
-    printf("\n\n");
-    img_text("ranking.txt");
-    while(1){
-        /*Poderia ser feito de forma recursiva.*/
-        printf("\n\nDeseja retornar?(S/N):");
-        scanf(" %c", &opcao);
-        if (opcao == 'S' || opcao == 's'){
-            clrscr();
-            menu_jogo();
-        }
-        else if (opcao == 'N' || opcao == 'n') return;
-        else{ //Limpar o buffer para nao ter erro.
-            ERRO
-            setbuf(stdin,0);
-            //opcao = NULL;
-            continue;
-            }
-        }
+    return 0;
 }
 
 /*Funcao que ira criar o menu do jogo.*/
@@ -241,9 +123,127 @@ void menu_jogo(){
 
 }
 
-int main(){
+/*Funcao que limpa a tela.*/
+void clrscr(){
+    system("@cls||clear");
+}
 
-    menu_jogo();
+/*Funcao ira mostrar as regras do jogo*/
+int regras_jogo(){
+    
+    char opcao;
 
-    return 0;
+    img_text("regras.txt");
+
+    printf("\n\n1 - Se você descobrir uma mina, o jogo acaba.\n");
+    printf("2 - Se descobrir um quadrado vazio, o jogo continua.\n");
+    printf("3 - Se aparecer um número, ele informará quantas minas estão escondidas nos oito quadrados que o cercam. \n");
+    
+    img_text("regras_r.txt");
+    
+    while (1){    
+        printf("\n\nAceita as regras e deseja prosseguir?(S/N):");
+        scanf(" %c", &opcao);
+        if (opcao == 'S' || opcao == 's'){
+            return 1;
+        }else if (opcao == 'N' || opcao == 'n'){
+            return 0;
+        }else{ //Limpar o buffer para nao ter erro.
+            ERRO
+            setbuf(stdin,0);
+            //opcao = "\000";
+            continue;
+        }
+    }
+
+}
+
+/*Funcao que ira mostrar os creditos na tela*/
+int creditos(){
+
+    char opcao;
+
+    img_text("creditos.txt");
+
+    printf("\n\n1 - Camila Lacerda\n2 - Felipe de Jesus\n");
+    printf("3 - Luiz Felipe A. Soares\n4 - Pedro Pompolino\n\n");
+
+    while(1){
+        /*Poderia ser feito de forma recursiva.*/
+        printf("Deseja retornar?(S/N):");
+        scanf(" %c", &opcao);
+        if (opcao == 'S' || opcao == 's'){
+            clrscr();
+            menu_jogo();
+        }
+        else if (opcao == 'N' || opcao == 'n') return 0;
+        else{ //Limpar o buffer para nao ter erro.
+            ERRO
+            setbuf(stdin,0);
+            //opcao = NULL;
+            continue;
+            }
+        }
+}
+
+/*Funcao que ira apenas motrar o ranking atual do jogo*/
+void mostra_ranking(){
+
+    char opcao;
+
+    img_text("ranking_image.txt");
+    printf("\n\n");
+    img_text("ranking.txt");
+    while(1){
+        /*Poderia ser feito de forma recursiva.*/
+        printf("\n\nDeseja retornar?(S/N):");
+        scanf(" %c", &opcao);
+        if (opcao == 'S' || opcao == 's'){
+            clrscr();
+            menu_jogo();
+        }
+        else if (opcao == 'N' || opcao == 'n') return;
+        else{ //Limpar o buffer para nao ter erro.
+            ERRO
+            setbuf(stdin,0);
+            //opcao = NULL;
+            continue;
+            }
+        }
+}
+
+/*Funcao que ira continuar jogando o jogo*/
+int continues(){
+    char opcao;
+    while(1){
+        printf("Deseja continuar jogando?(S/N):");
+        scanf(" %c", &opcao);
+        if (opcao == 'S' || opcao == 's'){
+            return 1;
+        }else if (opcao == 'N' || opcao == 'n'){
+            return 0;
+        }else{ //Limpar o buffer para nao ter erro.
+            ERRO
+            setbuf(stdin,0);
+            //opcao = "\000";
+            continue;
+        }
+    }
+}
+
+/*Funcao que ira criar colocar as logos do campo minado puxando de um arquivo*/
+void img_text(char name[255]){
+
+    char *filename = name;
+    FILE *fptr;
+    if(!(fptr = fopen(filename, "r"))){
+        fprintf(stderr,"Erro na abertura do arquivo %s.\n", filename);
+        return;
+    }
+    char read_string[MAX_LEN];
+    while(fgets(read_string,sizeof(read_string),fptr) != NULL){
+        printf("%s", read_string);
+    }
+    fclose(fptr);
+    return;
 }
