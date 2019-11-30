@@ -25,6 +25,12 @@ Um jogo criado para ser o trabalho final da disciplina de computação na Univer
         - Personalizado -> O jogador escolhe o tamanho do tabuleiro e a quantidade de minas
         
     ### Exemplo
-        João deseja iniciar o campo minado e após aceitar as regras 
+        João deseja iniciar o campo minado e após aceitar as regras do jogo ele irá abrir um bloco.
+        
+        #### João digita: a b 1.
+        
+        Com este comando, João abre a linha B na coluna 1.
+        
+        
         
 
