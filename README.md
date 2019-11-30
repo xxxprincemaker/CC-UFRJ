@@ -7,7 +7,7 @@ Um jogo criado para ser o trabalho final da disciplina de computação na Univer
 
      1. - Se você descobrir uma mina, o jogo acaba.
      2. - Se descobrir um quadrado vazio, o jogo continua.
-     3. - Se aparecer um número, ele informará quantas minas estão escondidas nos oito quadrados que o cercam.
+     3. - Se aparecer um número, ele informará quantas minas estão escondidas entre os oito quadrados que o cercam.
      4. - O jogador pode escolher botar uma bandeira, interrogação, remover um deles ou abrir um bloco;
         - Para botar uma bandeira: "@ [linha] [coluna]";
         - Para botar uma interrogação: "? [linha] [coluna]";
