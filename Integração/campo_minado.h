@@ -3,19 +3,22 @@
 #include <string.h>
 #include <ctype.h>
 #include <time.h>
+#define LONG long long int
 
 /*prototipos*/
 void clear();
-int partida(int lin, int col, int minas);
+LONG NumReal(char *num);
+int ver_jogada(char *op, char *l, char *aux, int lin, int col);
 int ** gera_tabuleiro(int lin, int col);
-void mostra_tab(int **tab, int lin, int col);
 void bombardeio(int **tab, int lin, int col, int bombas);
 void descobre_minas(int **tab, int lin, int col);
 int minas_arredores(int **tab, int i, int j);
 void descobre_blocos(int **tab, int i, int j);
 int calcula_livres(int **tab, int lin, int col);
 void bota_bandeiras(int **tab, int lin, int col);
-void escreve_placar(char nome[], double secs);
+
+int partida(int lin, int col, int minas);
+void mostra_tab(int **tab, int lin, int col);
 
 
 
@@ -26,93 +29,89 @@ void clear(){
 }
 
 
-int campo_init(int lin, int col, int minas){ 
-    int resultado;
-    char nome[25];
-    clock_t timer;
-    
-    system(" ");//Para fazer o VT100 funcionar no Windows 10 
+LONG NumReal(char *num){
+	int i, cont = 0;
+	LONG tam;
+	
+	for(i=0; num[i]!='\0'; i++){
+		if(num[i]=='0')
+			cont++;
+		if(num[i]<'0' || num[i]>'9')
+			return -1;
+	}
 
-    if (lin == 0 && col == 0 && minas == 0){
-    
-        printf("Entre com as coordenadas do tabuleiro: ");
-        scanf("%d%d", &lin, &col);  
-        
-        /*Caso coloque uma quantidade maior de minas do que o disponivel, retornar erro.*/
-        while (1){
-            printf("Entre com o numero de minas: ");
-            scanf("%d", &minas);
+	tam = cont - i;
 
-            if ((lin*col) < minas){
-                printf("\nDigite uma quantidade de minas menor que a multiplicacao entre as coordenadas.\n\n");
-                setbuf(stdin, 0);
-                continue;
+	if(tam==0)
+		return 0;
 
-            }else break;
-        }
-    }
-
-    timer = clock();
-    //vai ser chamado de acordo com o modo
-    resultado = partida(lin, col, minas);
-    timer = clock() - timer;
-    double time_taken = ((double)timer)/CLOCKS_PER_SEC;
-    
-    
-    if(resultado<0){
-        printf("\nVoce perdeu!\n");
-    }
-    else{
-        
-        printf("\nParabens, voce venceu!!\n"); 
-        printf("Por favor, digite o seu nome: ");
-        scanf(" %[^\n]s", nome);
-
-        /*Grava no arquivo se tiver batido record*/
-        escreve_placar(nome, time_taken);
-    }
-
-    return 0;
+	tam = atoll(num);
+	return tam;
 }
 
+
+int ver_jogada(char *op, char *l, char *aux, int lin, int col){
+	int c;
+	
+	if(strlen(op)!=1 || strlen(l)!=1)
+		return 0;
+	
+	op[0] = toupper(op[0]);
+	l[0] = toupper(l[0]);
+	
+	if(op[0]!='A' && op[0]!='@' && op[0]!='?' && op[0]!='R')
+		return 0;
+	
+	c = (int) NumReal(aux);
+
+	if(c<0 || c>col || l[0]<'A' || l[0]>='A'+lin)
+		return 0;				
+
+	return c;
+}
 
 
 int partida(int lin, int col, int minas){
     int **tab, i, j, tempo=1;
-    int c, livres, jogada;
-    char op, l;
+    int c, livres, jogada=0;
+    char op[100], l[100], aux[100];
+    //clock_t timer;
 
     tab = gera_tabuleiro(lin+2, col+2);
     bombardeio(tab, lin, col, minas);
-   
-    //setlocale(LC_ALL, "");
 
 
-    printf("\033c \n");
-    mostra_tab(tab, lin, col);
-    /*Necessario validacao, pois o usuario pode digitar coordenadas que nao existem.*/
-    printf("\nEntre com a sua jogada:");
-    scanf(" %c %c", &op, &l);
-    scanf(" %d", &c);
-    printf("EI");
-
-    /*O cronômetro começa*/
-
+    while(1){
+    	mostra_tab(tab, lin, col);
+	
+    	if(jogada)
+			printf("\nJogada invalida!");
+		
+		printf("\nEntre com a sua jogada: ");
+    	scanf(" %s %s %[^\n]s", op, l, aux);
+    	
+		if(c = ver_jogada(op, l, aux, lin, col))
+			break;		
+		
+		jogada = 1;
+	}
+	
+    /*O cronometro comeca*/
+    //timer = clock();
     livres = lin*col - minas;
     while(1){
-        op = toupper(op);
-        i = (toupper(l)-'A')+1;
+        i = (l[0]-'A')+1;
         j = c;
-        jogada = 0;
+    	jogada = 0;
 
-        switch(op){
+        switch(op[0]){
             case '?':
                 if(tab[i][j]==0 || tab[i][j]==-1)
                     tab[i][j] += -10;
                 else if(tab[i][j]/10==-2)
                     tab[i][j] = tab[i][j]%10 - 10;
                 else
-                    jogada = 1;
+                    jogada = 2;
                 break;
 
 
@@ -122,7 +121,7 @@ int partida(int lin, int col, int minas){
                 else if(tab[i][j]/10==-1)
                     tab[i][j] = tab[i][j]%10 - 20;
                 else
-                    jogada = 1;
+                    jogada = 2;
                 break;
 
 
@@ -130,7 +129,7 @@ int partida(int lin, int col, int minas){
                 if(tab[i][j]/10==-2 || tab[i][j]/10==-1)
                     tab[i][j] %= 10;
                 else
-                    jogada = 1; 
+                    jogada = 3; 
                 break;
 
             
@@ -140,7 +139,6 @@ int partida(int lin, int col, int minas){
                         descobre_minas(tab, lin, col);
                         tab[i][j] = -41;
 
-                        printf("\033c \n");
                         mostra_tab(tab, lin, col);
                         return -1;
                     }
@@ -151,32 +149,49 @@ int partida(int lin, int col, int minas){
                         goto VITORIA;
                 }
                 else
-                    jogada = 1;
+                    jogada = 4;
                 break;
-
-
-            default:
-                jogada = 1;
         }
-
-        printf("\033c \n");
-        mostra_tab(tab, lin, col);
-        if(jogada)
-            printf("\nJogada invalida!");
         
-
-        printf("\nEntre com a sua jogada: ");
-        scanf(" %c %c %d", &op, &l, &c);
-        printf("EI");
+		mostra_tab(tab, lin, col);
+		switch(jogada){
+			case 2:
+				printf("\nO bloco escolhido ja foi aberto!");
+				break;
+			
+			case 3:
+				printf("\nNao ha simbolo para remover no bloco escolhido!");
+				break;
+				
+			case 4:
+				printf("\nNao ha como abrir o bloco escolhido!");
+				break;
+		}
+		
+		while(1){
+		    if(jogada==1)
+		        printf("\nJogada invalida!");
+		    
+			printf("\nEntre com a sua jogada: ");
+			scanf(" %s %s %[^\n]s", op, l, aux);
+			
+			if(c = ver_jogada(op, l, aux, lin, col))
+				break;
+			
+			jogada = 1;
+			mostra_tab(tab, lin, col);	
+		}
     }
 
 
 VITORIA:
+	//timer = clock() - timer;
+    //double time_taken = ((double)timer)/CLOCKS_PER_SEC;
     bota_bandeiras(tab, lin, col);
-    printf("\033c \n");
     mostra_tab(tab, lin, col);
-    return tempo; //Do cronômetro
+    return tempo; //Do cronometro
 }
+
 
 
 int ** gera_tabuleiro(int lin, int col){
@@ -222,7 +237,8 @@ void mostra_tab(int **tab, int lin, int col){
     int i, j;
     char *simb = "*X@?";
     
-    printf("  ");
+	clear();
+    printf("\n  ");
     for(j=1; j<=col; j++){
         printf("%3d", j);
     }
@@ -380,11 +396,4 @@ void bota_bandeiras(int **tab, int lin, int col){
                 tab[i][j] = -21;
         }
     }
-}
-
-
-/*Esta funcao grava no arquivo o placar do jogo*/
-void escreve_placar(char nome[], double secs){
-
-
 }

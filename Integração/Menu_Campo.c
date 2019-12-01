@@ -12,7 +12,8 @@ void Creditos();
 void retornar();
 int continuar();
 void img_text(char *path, char *name);
-
+void campo_init(char modo, int lin, int col, int minas);
+void escreve_placar(char modo, char nome[], double secs);
 
 
 int main(){
@@ -64,7 +65,7 @@ int continuar(){
     
 	while(1){
         printf("\nDeseja continuar jogando?(S/N): ");
-        scanf(" %[^\n]s", opcao);
+        scanf(" %[^\n]s", &opcao);
 		
 		if(strlen(opcao)==1){
 			if(toupper(opcao[0]) == 'S')
@@ -84,7 +85,7 @@ void menu_jogo(){
     char opcao[MAX_LEN]; 
     
 	clear();
-    img_text("Arquivos/Campo Minado.txt", "Campo Minado\n\n");
+    img_text(".\\Arquivos\\Campo Minado.txt", "Campo Minado\n\n");
     
     printf("\nSeja Bem-Vindo ao Campo Minado!\n");
     printf("\n1 - Jogar");
@@ -137,9 +138,9 @@ void Jogar(){
     	clear();
 
     	printf("Digite a dificuldade que deseja jogar\n");
-        printf("\n1 - Iniciante\n");	
-        printf("2 - Intermediario\n");
-        printf("3 - Especialista\n");
+        printf("\n1 - Iniciante (9x9)\n");	
+        printf("2 - Intermediario (16x16)\n");
+        printf("3 - Especialista (16x30)\n");
         printf("4 - Personalizado\n");
         printf("5 - Voltar\n");
 
@@ -163,7 +164,7 @@ void Jogar(){
                 break;
                 
             case '3': //Configura o Jogo no modo Especialista.
-                lin=30, col=16, minas=99;
+                lin=16, col=30, minas=99;
                 break;
                 
             case '4': //Configura o Jogo no modo Personalizado.
@@ -175,7 +176,7 @@ void Jogar(){
         }
         
         clear();
-        campo_init(lin, col, minas);
+        campo_init(opcao[0], lin, col, minas);
         
 		if(continuar() == 0)
 			break; 
@@ -215,10 +216,79 @@ void Ranking(){
 /*Funcao que ira mostrar os creditos na tela*/
 void Creditos(){
 	
-	img_text("Arquivos/Crï¿½ditos.txt", "Crï¿½ditos:\n");
+	img_text("Arquivos/Créditos.txt", "Créditos:\n");
 
     printf("\n\n1 - Camila Lacerda\n2 - Felipe de Jesus\n");
     printf("3 - Luiz Felipe A. Soares\n4 - Pedro Poppolino\n\n");
 
     retornar();
+}
+
+
+void campo_init(char modo, int lin, int col, int minas){ 
+    int i, resultado;
+    char nome[MAX_LEN], op1[MAX_LEN], op2[MAX_LEN];
+	 
+
+    if(modo == '4'){
+    	
+    	while(1){
+        	printf("Entre com as dimensoes do tabuleiro (linha e coluna): ");
+        	scanf(" %s %[^\n]s", op1, op2);  
+    		
+			lin = (int) NumReal(op1);
+			col = (int) NumReal(op2);
+				
+			if(lin>8 && col>8 && lin<=24 && col<=30)
+				break;
+			
+			printf("Dimensoes invalidas! A dimensao minima é 9x9 e a maxima é 24x30.\n\n");
+		}
+        
+        /*Caso coloque uma quantidade maior de minas do que o disponivel, retornar erro.*/
+        while (1){
+            printf("\nEntre com o numero de minas: ");
+            scanf(" %[^\n]s", op1);
+            
+            minas = NumReal(op1);
+
+            if(minas>9 && minas <= (lin-1)*(col-1))
+                break;
+                    
+			printf("A quantidade de minas deve ser maior que 10 e menor que %d.\n", (lin-1)*(col-1)+1);
+        }
+    }
+
+    //vai ser chamado de acordo com o modo
+    resultado = partida(lin, col, minas);
+    
+    if(resultado<0){
+        printf("\nVoce perdeu!\n");
+        return;
+    }
+        
+    printf("\nParabens, voce venceu!!\n\n"); 
+    if(modo=='4')
+    	return;
+    	
+    while(1){
+    	printf("Por favor, digite o seu nome (30 caracteres): ");
+    	scanf(" %[^\n]s", nome);
+		
+		if(strlen(nome)<=30){
+			for(i=0; nome[i]!='\0'; i++){
+				if(toupper((nome[i])<'A' || toupper(nome[i])>'Z') && nome[i]!=' ')
+					break;
+			}
+			if(nome[i]=='\0')
+				break;	
+		}
+		
+		printf("Nome invalido! O nome deve ter até 30 caracteres e apenas letras do alfabeto.\n\n");
+	}
+	
+	
+    /*Grava no arquivo se tiver batido record*/
+    //escreve_placar(modo, nome, resultado);
+
 }
