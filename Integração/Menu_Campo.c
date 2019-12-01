@@ -64,7 +64,7 @@ int continuar(){
     
 	while(1){
         printf("\nDeseja continuar jogando?(S/N): ");
-        scanf(" %[^\n]", &opcao);
+        scanf(" %[^\n]s", opcao);
 		
 		if(strlen(opcao)==1){
 			if(toupper(opcao[0]) == 'S')
@@ -215,7 +215,7 @@ void Ranking(){
 /*Funcao que ira mostrar os creditos na tela*/
 void Creditos(){
 	
-	img_text("Arquivos/Créditos.txt", "Créditos:\n");
+	img_text("Arquivos/Crï¿½ditos.txt", "Crï¿½ditos:\n");
 
     printf("\n\n1 - Camila Lacerda\n2 - Felipe de Jesus\n");
     printf("3 - Luiz Felipe A. Soares\n4 - Pedro Poppolino\n\n");

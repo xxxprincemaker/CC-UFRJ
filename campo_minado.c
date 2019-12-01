@@ -14,6 +14,7 @@ int minas_arredores(int **tab, int i, int j);
 void descobre_blocos(int **tab, int i, int j);
 int calcula_livres(int **tab, int lin, int col);
 void bota_bandeiras(int **tab, int lin, int col);
+void escreve_arquivos(char nome[], float tempo);
 
 
 int main(){ 
