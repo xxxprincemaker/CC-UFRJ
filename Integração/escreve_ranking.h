@@ -13,7 +13,7 @@ typedef struct _RANK{
 /*Prototipos*/
 void ordena_struct(RANK winners[], int tam);
 
-int escrever_ranking(char modo, char new_winner[30], int new_winner_time){
+void escrever_ranking(char modo, char new_winner[30], int new_winner_time){
     
     char *file_name, string[MAX_LEN];
 
