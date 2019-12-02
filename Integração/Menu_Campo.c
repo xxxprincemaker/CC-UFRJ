@@ -208,11 +208,11 @@ void Ranking(){
     img_text("Arquivos/Ranking.txt", "Ranking:\n");
     printf("\n\n");
     printf("Iniciante:\n");
-    img_text("CC-UFRJ/ranking_iniciante.txt", "Aqui era para ter o Ranking dos jogadores.");
+    img_text("Arquivos/ranking_iniciante.txt", "Aqui era para ter o Ranking dos jogadores.");
     printf("\n\nIntermediario:\n");
-    img_text("CC-UFRJ/ranking_intermediario.txt", "Aqui era para ter o Ranking dos jogadores.");
+    img_text("Arquivos/ranking_intermediario.txt", "Aqui era para ter o Ranking dos jogadores.");
     printf("\nEspecialista:\n");
-    img_text("CC-UFRJ/ranking_especialista.txt", "Aqui era para ter o Ranking dos jogadores.");
+    img_text("Arquivos/ranking_especialista.txt", "Aqui era para ter o Ranking dos jogadores.");
 
 	printf("\n\n");
     retornar();
