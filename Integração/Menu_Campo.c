@@ -15,6 +15,7 @@ int continuar();
 void img_text(char *path, char *name);
 void campo_init(char modo, int lin, int col, int minas);
 void escreve_placar(char modo, char nome[], double secs);
+void mostrar_ranking();
 
 
 int main(){
@@ -212,12 +213,7 @@ void Ranking(){
 
     img_text("Arquivos/Ranking.txt", "Ranking:\n");
     printf("\n\n");
-    printf("Iniciante:\n");
-    img_text("Arquivos/ranking_iniciante.txt", "Aqui era para ter o Ranking dos jogadores.");
-    printf("\n\nIntermediario:\n");
-    img_text("Arquivos/ranking_intermediario.txt", "Aqui era para ter o Ranking dos jogadores.");
-    printf("\n\nEspecialista:\n");
-    img_text("Arquivos/ranking_especialista.txt", "Aqui era para ter o Ranking dos jogadores.");
+    mostrar_ranking();
 
 	printf("\n\n");
     retornar();
@@ -301,4 +297,66 @@ void campo_init(char modo, int lin, int col, int minas){
 	
     /*Grava no arquivo se tiver batido record*/
     escrever_ranking(modo, nome, resultado);
+}
+
+
+/*Ira Mostrar o RANK*/
+void mostrar_ranking(){
+
+    int cont=0, i;
+    char *file1 = "Arquivos/ranking_iniciante.txt";
+    char *file2 = "Arquivos/ranking_intermediario.txt";
+    char *file3 = "Arquivos/ranking_especialista.txt";
+    char string[MAX_LEN];
+
+    RANK winner[10];
+    FILE *arquivo;
+
+    /*Primeiro Arquivo*/
+    if(!(arquivo = fopen(file1,"r"))){
+        fprintf(stderr,"Erro na abertura do arquivo %s.\n", file1);
+    }
+    printf("-Iniciante-\n");
+    while(fgets(string, sizeof(string), arquivo)){
+	    cont++;
+	}
+    rewind(arquivo);
+    printf("Posicao \t Tempo(s) \t Nome\n\n");
+    for(i=0; i<cont && !feof(arquivo); i++){
+        fscanf(arquivo,"%d %[^\n]s", &winner[i].tempo, winner[i].nome);
+        printf("%d \t\t %ds \t\t %s\n", i+1,winner[i].tempo, winner[i].nome);
+    }  
+    fclose(arquivo);
+    cont = 0;
+    /*Segundo Arquvio*/
+    if(!(arquivo = fopen(file2,"r"))){
+        fprintf(stderr,"Erro na abertura do arquivo %s.\n", file1);
+    }
+    printf("\n-Intermediario-\n");
+    while(fgets(string, sizeof(string), arquivo)){
+	    cont++;
+	}
+    rewind(arquivo);
+    printf("Posicao \t Tempo(s) \t Nome\n\n");
+    for(i=0; i<cont && !feof(arquivo); i++){
+        fscanf(arquivo,"%d %[^\n]s", &winner[i].tempo, winner[i].nome);
+        printf("%d \t\t %ds \t\t %s\n", i+1,winner[i].tempo, winner[i].nome);
+    }
+    fclose(arquivo);
+    cont = 0;
+    /*Terceiro Arquivo*/
+    if(!(arquivo = fopen(file3,"r"))){
+        fprintf(stderr,"Erro na abertura do arquivo %s.\n", file1);
+    }
+    printf("\n-Especialista-\n");
+    while(fgets(string, sizeof(string), arquivo)){
+	    cont++;
+	}
+    rewind(arquivo);
+    printf("Posicao \t Tempo(s) \t Nome\n\n");
+    for(i=0; i<cont && !feof(arquivo); i++){
+        fscanf(arquivo,"%d %[^\n]s", &winner[i].tempo, winner[i].nome);
+        printf("%d \t\t %ds \t\t %s\n", i+1,winner[i].tempo, winner[i].nome);
+    }
+    fclose(arquivo);
 }
