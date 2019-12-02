@@ -75,7 +75,7 @@ int partida(int lin, int col, int minas){
     int **tab, i, j, tempo=1;
     int c, livres, jogada=0;
     char op[100], l[100], aux[100];
-    //clock_t timer;
+    time_t inicio, fim;
 
     tab = gera_tabuleiro(lin+2, col+2);
     bombardeio(tab, lin, col, minas);
@@ -96,8 +96,7 @@ int partida(int lin, int col, int minas){
 		jogada = 1;
 	}
 	
-    /*O cronometro comeca*/
-    //timer = clock();
+   	time(&inicio);
     livres = lin*col - minas;
     while(1){
         i = (l[0]-'A')+1;
@@ -185,11 +184,11 @@ int partida(int lin, int col, int minas){
 
 
 VITORIA:
-	//timer = clock() - timer;
-    //double time_taken = ((double)timer)/CLOCKS_PER_SEC;
+	time(&fim);
     bota_bandeiras(tab, lin, col);
     mostra_tab(tab, lin, col);
-    return tempo; //Do cronometro
+	tempo = inicio - fim;
+    return tempo; //Do jogador
 }
 
 
