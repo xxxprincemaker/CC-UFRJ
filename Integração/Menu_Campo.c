@@ -191,13 +191,18 @@ void Regras(){
 
 	img_text("Arquivos/Regras.txt", "Regras:\n");
 
-    printf("\n\n1 - Se voce descobrir uma mina, o jogo acaba.\n");
-    printf("2 - Se descobrir um quadrado vazio, o jogo continua.\n");
-    printf("3 - Se aparecer um numero, ele informara quantas minas estao escondidas nos oito quadrados que o cercam. \n");
+    printf("\n\n1 - Inicialmente, o tabuleiro aparece com todas as casas fechadas.\n");
+	printf("2 - Ao selecionar uma casa, ela 'abre', revelando o que havia nela:\n");
+	printf("    2.1 - Casas sem nada indicam que nao existem bombas ao redor delas;\n"); 
+	printf("    2.2 - Casas com numeros mostram a quantidade de bombas ao redor delas.\n");
+	printf("3 - Se uma casa nao exibe nada, ela abre as adjacentes.\n");
+	printf("4 - Pode-se colocar uma bandeira em uma casa que aparenta ter bomba.\n");
+	printf("5 - Pode ser colocada uma ? em uma casa, caso haja duvidas da existencia de uma bomba.\n");
+	printf("\n6 - O jogo acaba em derrota quando se seleciona uma casa que contem uma bomba.\n");
+	printf("7 - Para ganhar a partida, todas as casas que nao contem bombas devem ser abertas.\n\n");
     
     img_text("Arquivos/regras_r.txt", "Aqui era para ter as regras gerais do jogo.");
     
-	printf("\n\n");
     retornar();
 }
 
@@ -211,7 +216,7 @@ void Ranking(){
     img_text("Arquivos/ranking_iniciante.txt", "Aqui era para ter o Ranking dos jogadores.");
     printf("\n\nIntermediario:\n");
     img_text("Arquivos/ranking_intermediario.txt", "Aqui era para ter o Ranking dos jogadores.");
-    printf("\nEspecialista:\n");
+    printf("\n\nEspecialista:\n");
     img_text("Arquivos/ranking_especialista.txt", "Aqui era para ter o Ranking dos jogadores.");
 
 	printf("\n\n");
@@ -222,7 +227,7 @@ void Ranking(){
 /*Funcao que ira mostrar os creditos na tela*/
 void Creditos(){
 	
-	img_text("Arquivos/Cr�ditos.txt", "Cr�ditos:\n");
+	img_text("Arquivos/Creditos.txt", "Creditos:\n");
 
     printf("\n\n1 - Camila Lacerda\n2 - Felipe de Jesus\n");
     printf("3 - Luiz Felipe A. Soares\n4 - Pedro Poppolino\n\n");
@@ -248,7 +253,7 @@ void campo_init(char modo, int lin, int col, int minas){
 			if(lin>8 && col>8 && lin<=24 && col<=30)
 				break;
 			
-			printf("Dimensoes invalidas! A dimensao minima � 9x9 e a maxima � 24x30.\n\n");
+			printf("Dimensoes invalidas! A dimensao minima deve ser de 9x9 e a maxima de 24x30.\n\n");
 		}
         
         /*Caso coloque uma quantidade maior de minas do que o disponivel, retornar erro.*/
@@ -290,12 +295,10 @@ void campo_init(char modo, int lin, int col, int minas){
 				break;	
 		}
 		
-		printf("Nome invalido! O nome deve ter at� 30 caracteres e apenas letras do alfabeto.\n\n");
+		printf("Nome invalido! O nome deve ter ate 30 caracteres e apenas letras do alfabeto.\n\n");
 	}
 	
 	
     /*Grava no arquivo se tiver batido record*/
-    //escrever_ranking(,nome,);
-    //escreve_placar(modo, nome, resultado);
-
+    escrever_ranking(modo, nome, resultado);
 }
