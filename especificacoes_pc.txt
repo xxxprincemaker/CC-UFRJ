@@ -1,0 +1,20 @@
+Versão do SO: Linux Mint 19.1 Cinnamon
+Versão do Cinnamon: 4.0.10
+Kernel do Linux: 4.15.0-20-generic
+Versão do gcc: version 7.4.0 (Ubuntu 7.4.0-1ubuntu1~18.04.1)
+
+
+
+Bibliotecas indisponíveis de gráfico/coisas de interface:
+    - #include<dos.h>
+    - #include<graphics.h>
+    - #include<windows.h>
+    - #include<conio.h>
+    - #include<posix_opt.h>
+    - #include<glib.h> (ao menos não tem como usar pelo programa, apesar de existir)
+    
+    
+Bibliotecas disponíveis:
+    - As padrões do C: stdio.h, ctype.h, stdlib.h, string.h;
+    - #include<ncurses.h>; (NÃO PODE USAR NADA DE INTERFACE NO TRABALHO)
+      - Daria para usar adicionando -lncurses na compilação para adicionar as dependências;  
